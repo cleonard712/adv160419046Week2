@@ -26,6 +26,10 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        arguments?.let {
+            val playerName = GameFragmentArgs.fromBundle(requireArguments()).playerName
+            textTurn.text = "$playerName's Turn"
+        }
         buttonBack.setOnClickListener {
             val action = GameFragmentDirections.actionMainFragment()
             Navigation.findNavController(it).navigate(action)
